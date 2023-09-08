@@ -14,6 +14,7 @@
 #### [Проект](https://github.com/2Jinx/www/tree/main/Google "Проект")  
 #### [Результат верстки](https://2Jinx.github.io/www/Google/ "Результат верстки")
 
+---
 
 ## KTTC
 
