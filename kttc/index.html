@@ -79,6 +79,12 @@
                 height: 40px;
                 background: transparent;
             }
+            .submit-text {
+                background: transparent;
+                border: none;
+                width: 0px;
+                height: 0px;
+            }
             .sign-in-button{
                 margin-left: auto;
                 margin-right: 15px;
@@ -336,7 +342,7 @@
                     <img src="images/kttc_logo.svg" width="121px" height="50px">
                 </a></li>
             </ul>
-            <form class="header-input">
+            <form class="header-input" action="https://kttc.ru/wot/ru/user/" method="get">
                 <input class="input" type="text" autocomplete='off' spellcheck='false' autocorrect='off' placeholder="Введите ник или клан">
                 <select class="header-select">
                     <option>Ник</option>
@@ -345,6 +351,7 @@
                 <button class="search-button" type="button" aria-label="Поиск">
                     <img src="images/kttc_search.svg" width="14.42" height="13.71">
                 </button>
+                <input class="submit-text" type="submit">
             </form>
             <a class="header-link" href="">Ru</a>
             <div class="header-buttons">
