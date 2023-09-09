@@ -3,8 +3,8 @@
 
 ## Содержание
 
-- [Google](#1-Google)  
-- [KTTC](#2-KTTC)  
+- [Google](#Google)  
+- [KTTC](#KTTC)  
 
 ---
 
