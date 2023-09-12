@@ -22,3 +22,10 @@
 #### [Результат верстки](https://2Jinx.github.io/www/kttc/ "Результат верстки")
 
 ---
+
+## Battle.net
+
+#### [Проект](https://github.com/2Jinx/www/tree/main/Battle.net "Проект")  
+#### [Результат верстки](https://2Jinx.github.io/www/Battle.net/ "Результат верстки")
+
+---
