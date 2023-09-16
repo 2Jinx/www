@@ -1,26 +1,32 @@
 ﻿using System.Net;
-using Newtonsoft.Json;
 using System.Text;
+using System.Text.Json;
+using Configuration.MyHttpServer;
 
-class Program
+namespace MyHttpServer
 {
-    static async Task Main(string[] args)
+    class Program
     {
-        HttpListener server = new HttpListener();
-        if (File.Exists("appsetting.json"))
+        static async Task Main(string[] args)
         {
-            string json = File.ReadAllText("appsetting.json");
-            bool isAlive = true;
-            // Десериализация JSON в словарь
-            Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-            // Извлечение порта и адреса из словаря
-            if (data.ContainsKey("Port") && data.ContainsKey("Address"))
+            const string configFilePath = "appsetting.json";
+            try
             {
-                string port = data["Port"].ToString();
-                string address = data["Address"].ToString();
+                if (!File.Exists(configFilePath))
+                {
+                    Console.WriteLine("json файл не найден!");
+                    throw new Exception();
+                }
+                AppSettings config;
+                using (FileStream file = File.OpenRead(configFilePath))
+                {
+                    config = JsonSerializer.Deserialize<AppSettings>(file);
+                }
+
+                HttpListener server = new HttpListener();
                 // установка адресов прослушки
-                server.Prefixes.Add(address + ":" + port + "/connection/");
-                server.Prefixes.Add("http://localhost:" + port + "/");
+                server.Prefixes.Add($"{config.Address}:{config.Port}/connection/");
+                server.Prefixes.Add($"http://localhost:{config.Port}/");
                 server.Start(); // начинаем прослушивать входящие подключения
                 Console.WriteLine("Сервер начал работу!");
 
@@ -47,15 +53,15 @@ class Program
                 Console.WriteLine("Запрос обработан");
 
                 server.Stop();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
                 Console.WriteLine("Сервер закончил работу!");
             }
         }
-        else
-        {
-            throw new ArgumentException("json файл не найден!");
-        }
     }
 }
-
-
-
