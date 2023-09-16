@@ -1,0 +1,17 @@
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MyHttpServer
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MyHttpServer.deps.json
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MyHttpServer.runtimeconfig.json
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MyHttpServer.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MyHttpServer.pdb
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.csproj.AssemblyReference.cache
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.AssemblyInfoInputs.cache
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.AssemblyInfo.cs
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.csproj.CoreCompileInputs.cache
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/refint/MyHttpServer.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.pdb
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.genruntimeconfig.cache
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/ref/MyHttpServer.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.csproj.CopyComplete

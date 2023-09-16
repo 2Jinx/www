@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "sUusp24NEFXNhQrVZytH03O5kifOycK5QP08sG6IfNHEZw4Jp0D8l+Hvm9nAEkyfHvWtLdxk7WpgCURBADunMA==",
+  "success": true,
+  "projectFilePath": "/Users/jinx/Projects/MyHttpServer/MyHttpServer/MyHttpServer.csproj",
+  "expectedPackageFiles": [
+    "/Users/jinx/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
