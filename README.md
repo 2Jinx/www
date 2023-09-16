@@ -4,7 +4,9 @@
 ## Содержание
 
 - [Google](#Google)  
-- [KTTC](#KTTC)  
+- [KTTC](#KTTC)
+- [Battle.net](#Battle.net)
+- [HTTP Server](#HTTP-Server)  
 
 ---
 
@@ -27,5 +29,11 @@
 
 #### [Проект](https://github.com/2Jinx/www/tree/main/Battle.net "Проект")  
 #### [Результат верстки](https://2Jinx.github.io/www/Battle.net/ "Результат верстки")
+
+---
+
+## HTTP Server
+
+#### [Проект](https://github.com/2Jinx/www/tree/main/MyHttpServer "Проект")
 
 ---
