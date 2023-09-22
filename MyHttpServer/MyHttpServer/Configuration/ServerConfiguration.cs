@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
 using Configuration.MyHttpServer;
 
@@ -7,7 +6,13 @@ namespace MyHttpServer
 {
     public class ServerConfiguration
     {
-        const string configFilePath = "appsettings.json";
+        private const string _configFilePath = "appsettings.json";
+        private AppSettings ? _config;
+
+        public ServerConfiguration()
+        {
+            _config = new AppSettings();
+        }
 
         /// <summary>
         /// Server configuration settings
@@ -17,29 +22,46 @@ namespace MyHttpServer
         {
             try
             {
-                if (!File.Exists(configFilePath))
+                if (!File.Exists(_configFilePath))
                 {
-                    Console.WriteLine("json file not found!");
-                    throw new Exception();
-                }
-                AppSettings config;
-                using (FileStream file = File.OpenRead(configFilePath))
-                {
-                    config = JsonSerializer.Deserialize<AppSettings>(file);
+                    throw new FileNotFoundException("json file not found!");
                 }
 
-                httplistener.Prefixes.Add($"{config.Address}:{config.Port}/connection/");
-                httplistener.Prefixes.Add($"http://localhost:{config.Port}/");
+                
+                using (FileStream file = File.OpenRead(_configFilePath))
+                {
+                    _config = JsonSerializer.Deserialize<AppSettings>(file);
+                }
+
+                httplistener.Prefixes.Add($"{_config.Address}:{_config.Port}/");
+                httplistener.Prefixes.Add($"http://localhost:{_config.Port}/");
             }
             catch(Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Configuration: {ex.Message}");
+                Console.ResetColor();
             }
             finally
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Configuration: All configurations set!");
+                Console.ResetColor();
+            }
+        }
+
+        /// <summary>
+        /// Static files path
+        /// </summary>
+        public string StaticFilesPath
+        {
+            get { return _config.StaticFilesPath; }
+            set
+            {
+                if (!Directory.Exists(_config.StaticFilesPath))
+                {
+                    Directory.CreateDirectory(_config.StaticFilesPath);
+                }
             }
         }
     }
