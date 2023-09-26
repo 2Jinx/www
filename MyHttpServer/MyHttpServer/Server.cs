@@ -34,7 +34,7 @@ namespace MyHttpServer
 
             var serverTask = ServerProcessAsync();
 
-            Console.WriteLine("Type 'stop' and press Enter to stop the server.");
+            Console.WriteLine("Type 'stop' and press 'Enter' to stop the server.");
             while (_isAlive)
             {
                 if (Console.ReadLine()?.ToLower() == "stop")
@@ -64,7 +64,6 @@ namespace MyHttpServer
         {
             while (_isAlive)
             {
-                Console.WriteLine();
                 var context = await _server.GetContextAsync();
                 HandleRequest(context);
             }
@@ -76,31 +75,52 @@ namespace MyHttpServer
             {
                 HttpListenerRequest request = context.Request;
                 var requestUrl = request.Url.AbsolutePath;
-                Console.WriteLine(requestUrl);
 
-                string responseText = "", filePath = requestUrl;
+                string filePath = requestUrl;
                 if (filePath.EndsWith("/"))
                     filePath = _configuration.StaticFilesPath + "/google/index.html";
 
                 if (filePath.StartsWith("/"))
+                {
                     filePath = filePath.Trim('/');
+                }
 
                 if (!File.Exists(filePath))
                 {
-                    filePath = $"{_configuration.StaticFilesPath}/404.html";
+                    if (!File.Exists(_configuration.StaticFilesPath + "/google/" + filePath))
+                    {
+                        filePath = $"{_configuration.StaticFilesPath}/404.html";
+                    }
+                    else
+                    {
+                        filePath = _configuration.StaticFilesPath + "/google/" + filePath;
+                    }
                 }
 
-                string extention = filePath.Substring(filePath.LastIndexOf('.'));
-                ParseExtention(extention);
-
-                responseText = File.ReadAllText(filePath);
+                string extension = Path.GetExtension(filePath);
+                
+                ParseExtention(extension);
 
                 HttpListenerResponse response = context.Response;
-                byte[] buffer = Encoding.UTF8.GetBytes(responseText);
 
-                response.ContentLength64 = buffer.Length;
-                response.OutputStream.Write(buffer, 0, buffer.Length);
                 response.ContentType = _contentType;
+
+                /* Вывод запросов в консоль
+                  
+                    Console.WriteLine("\n --------------");
+                    Console.WriteLine("request: " + requestUrl);
+                    Console.WriteLine("filepath : " + filePath);
+                    Console.WriteLine("extention: " + extension);
+                    Console.WriteLine("contentType: " + _contentType);
+                    Console.WriteLine("-------------- \n");
+
+                */
+
+                using (var fileStream = File.OpenRead(filePath))
+                {
+                    fileStream.CopyTo(response.OutputStream);
+                }
+
                 response.Close();
             }
             catch (Exception ex)
@@ -123,15 +143,19 @@ namespace MyHttpServer
                     _contentType = "text/html";
                     break;
                 case ".css":
-                    _contentType = "text/stylesheet";
+                    _contentType = "text/css";
                     break;
-                case "jpeg":
+                case ".jpeg":
                     _contentType = "image/jpeg";
                     break;
-                case "png":
-                case "svg":
-                case "ico":
-                    _contentType = "image/" + extention.Substring(1);
+                case ".png":
+                    _contentType = "image/png";
+                    break;
+                case ".svg":
+                    _contentType = "image/svg+xml";
+                    break;
+                case ".ico":
+                    _contentType = "image/x-icon";
                     break;
             }
         }
