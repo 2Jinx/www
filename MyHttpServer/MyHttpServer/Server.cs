@@ -14,11 +14,29 @@ namespace MyHttpServer
         private bool _isAlive;
         private string _contentType;
         private readonly object _lock = new object();
+        private string _sitePreset;
 
-        public Server()
+        public Server(string siteType)
         {
-            _configuration = new ServerConfiguration();
-            _server = new HttpListener();
+            lock (_lock)
+            {
+                if (_server == null)
+                {
+                    lock (_lock)
+                    {
+                        if (siteType == "google")
+                        {
+                            _sitePreset = "/google/";
+                        }
+                        else
+                        {
+                            _sitePreset = "/Battle.net/";
+                        }
+                        _configuration = new ServerConfiguration();
+                        _server = new HttpListener();
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -78,7 +96,7 @@ namespace MyHttpServer
 
                 string filePath = requestUrl;
                 if (filePath.EndsWith("/"))
-                    filePath = _configuration.StaticFilesPath + "/google/index.html";
+                    filePath = _configuration.StaticFilesPath + _sitePreset + "index.html";
 
                 if (filePath.StartsWith("/"))
                 {
@@ -87,13 +105,13 @@ namespace MyHttpServer
 
                 if (!File.Exists(filePath))
                 {
-                    if (!File.Exists(_configuration.StaticFilesPath + "/google/" + filePath))
+                    if (!File.Exists(_configuration.StaticFilesPath + _sitePreset + filePath))
                     {
                         filePath = $"{_configuration.StaticFilesPath}/404.html";
                     }
                     else
                     {
-                        filePath = _configuration.StaticFilesPath + "/google/" + filePath;
+                        filePath = _configuration.StaticFilesPath + _sitePreset + filePath;
                     }
                 }
 
@@ -105,16 +123,16 @@ namespace MyHttpServer
 
                 response.ContentType = _contentType;
 
-                /* Вывод запросов в консоль
+                // Вывод запросов в консоль
                   
-                    Console.WriteLine("\n --------------");
-                    Console.WriteLine("request: " + requestUrl);
-                    Console.WriteLine("filepath : " + filePath);
-                    Console.WriteLine("extention: " + extension);
-                    Console.WriteLine("contentType: " + _contentType);
-                    Console.WriteLine("-------------- \n");
+                    //Console.WriteLine("\n--------------");
+                    //Console.WriteLine("request: " + requestUrl);
+                    //Console.WriteLine("filepath : " + filePath);
+                    //Console.WriteLine("extention: " + extension);
+                    //Console.WriteLine("contentType: " + _contentType);
+                    //Console.WriteLine("-------------- \n");
 
-                */
+                //
 
                 using (var fileStream = File.OpenRead(filePath))
                 {
