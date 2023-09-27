@@ -7,7 +7,7 @@ namespace MyHttpServer
     public class ServerConfiguration
     {
         private const string _configFilePath = "appsettings.json";
-        private AppSettings ? _config;
+        private AppSettings _config;
 
         public ServerConfiguration()
         {
@@ -33,8 +33,8 @@ namespace MyHttpServer
                     _config = JsonSerializer.Deserialize<AppSettings>(file);
                 }
 
-                httplistener.Prefixes.Add($"{_config.Address}:{_config.Port}/");
-                httplistener.Prefixes.Add($"http://localhost:{_config.Port}/");
+                httplistener.Prefixes.Add($"{_config?.Address}:{_config?.Port}/");
+                httplistener.Prefixes.Add($"http://localhost:{_config?.Port}/");
             }
             catch(Exception ex)
             {
@@ -45,7 +45,7 @@ namespace MyHttpServer
             finally
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Configuration: All configurations set!");
+                Console.WriteLine("=== Configuration: All configurations set! ===\n");
                 Console.ResetColor();
             }
         }
@@ -58,7 +58,7 @@ namespace MyHttpServer
             get { return _config.StaticFilesPath; }
             set
             {
-                if (!Directory.Exists(_config.StaticFilesPath))
+                if (!Directory.Exists(_config?.StaticFilesPath))
                 {
                     Directory.CreateDirectory(_config.StaticFilesPath);
                 }

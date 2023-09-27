@@ -15,3 +15,8 @@
 /Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/ref/MyHttpServer.dll
 /Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/Newtonsoft.Json.dll
 /Users/jinx/Projects/MyHttpServer/MyHttpServer/obj/Debug/net7.0/MyHttpServer.csproj.CopyComplete
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/BouncyCastle.Cryptography.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MailKit.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/MimeKit.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/System.Security.Cryptography.Pkcs.dll
+/Users/jinx/Projects/MyHttpServer/MyHttpServer/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll

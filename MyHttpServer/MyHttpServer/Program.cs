@@ -9,7 +9,7 @@ namespace MyHttpServer
         {
             Server server = new Server("battle.net");       // <- Тут необходимо ввести название
                                                             // html странички (google, battle.net)
-            server.Start();
+            await server.Start();
         }
     }
 }
