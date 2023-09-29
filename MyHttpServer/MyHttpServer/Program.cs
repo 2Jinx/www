@@ -1,7 +1,4 @@
-﻿using System.Net;
-using System.Text;
-
-namespace MyHttpServer
+﻿namespace MyHttpServer
 {
     class Program
     {

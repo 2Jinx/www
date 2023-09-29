@@ -1,8 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
-using Configuration.MyHttpServer;
 
-namespace MyHttpServer
+namespace Configuration.MyHttpServer
 {
     public class ServerConfiguration
     {
@@ -63,6 +62,31 @@ namespace MyHttpServer
                     Directory.CreateDirectory(_config.StaticFilesPath);
                 }
             }
+        }
+
+        public string MailSender
+        {
+            get { return _config.MailSender; }
+        }
+
+        public string PasswordSender
+        {
+            get { return _config.PasswordSender; }
+        }
+
+        public string FromEmail
+        {
+            get { return _config.FromEmail; }
+        }
+
+        public string SmtpServerHost
+        {
+            get { return _config.SmtpServerHost; }
+        }
+
+        public int SmtpServerPort
+        {
+            get { return _config.SmtpServerPort; }
         }
     }
 }
