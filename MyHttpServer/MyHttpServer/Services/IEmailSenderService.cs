@@ -1,4 +1,4 @@
-﻿namespace Services.MyHttpServer
+﻿namespace MyHttpServer.Services
 {
     public interface IEmailSenderService
     {

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Handler.MyHttpServer
+namespace MyHttpServer.Handler
 {
     public interface IHandler
     {

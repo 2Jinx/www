@@ -1,7 +1,6 @@
 ﻿using System.Net;
-using System.Web;
-using Configuration.MyHttpServer;
-using Handler.MyHttpServer;
+using MyHttpServer.Configuration;
+using MyHttpServer.Handler;
 
 namespace MyHttpServer
 {
@@ -86,7 +85,8 @@ namespace MyHttpServer
             while (_isAlive)
             {
                 var context = await _server.GetContextAsync();
-                new StaticFilesHandler(_sitePreset, _configuration).Handle(context);
+                StaticFilesHandler staticHandler = new StaticFilesHandler(_sitePreset, _configuration);
+                staticHandler.Handle(context);
             }
         }
     }

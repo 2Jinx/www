@@ -1,8 +1,8 @@
 ﻿using MimeKit;
 using MailKit.Net.Smtp;
-using Configuration.MyHttpServer;
+using MyHttpServer.Configuration;
 
-namespace Services.MyHttpServer
+namespace MyHttpServer.Services
 {
     public class EmailSender: IEmailSenderService
     {
@@ -27,7 +27,7 @@ namespace Services.MyHttpServer
                 Console.WriteLine("==== Message sent! ====\n");
                 Console.ResetColor();
                 smtpClient.Disconnect(true);
-                
+                smtpClient.Dispose();
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace Services.MyHttpServer
             }
         }
 
-        public MimeMessage GenerateMessage(string email, string password)
+        private MimeMessage GenerateMessage(string email, string password)
         {
             var message = new MimeMessage();
 

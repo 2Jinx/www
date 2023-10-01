@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace Configuration.MyHttpServer
+namespace MyHttpServer.Configuration
 {
     public class ServerConfiguration
     {

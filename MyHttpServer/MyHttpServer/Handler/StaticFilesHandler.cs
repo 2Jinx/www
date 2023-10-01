@@ -1,14 +1,12 @@
 ﻿using System.Net;
-using System.Web;
-using Configuration.MyHttpServer;
-using Services.MyHttpServer;
+using MyHttpServer.Configuration;
 
-namespace Handler.MyHttpServer
+namespace MyHttpServer.Handler
 {
     public class StaticFilesHandler: IHandler
     {
-        private string _sitePreset;
-        private ServerConfiguration _configuration;
+        private readonly string _sitePreset;
+        private readonly ServerConfiguration _configuration;
 
         public StaticFilesHandler(string sitePreset, ServerConfiguration configuration)
         {
@@ -22,45 +20,44 @@ namespace Handler.MyHttpServer
             {
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
-                string requestUrl = request.Url!.AbsolutePath, filePath = requestUrl;
-
-                if (request.HttpMethod.Equals("Post", StringComparison.OrdinalIgnoreCase) && requestUrl == "/email-sender")
+                string absolutePath = request.Url!.AbsolutePath, filePath = absolutePath;
+                if (request.HttpMethod.Equals("Get", StringComparison.OrdinalIgnoreCase))
                 {
-                    string str = await new StreamReader(request.InputStream).ReadToEndAsync();
-                    EmailSender sender = new EmailSender(_configuration);
-                    filePath = "/";
-                    sender.SendEmail(HttpUtility.UrlDecode(str.Split('&')[0].Split('=')[1]), HttpUtility.UrlDecode(str.Split('&')[1].Split('=')[1]));
-                }
+                    if (filePath == "/")
+                        filePath = _configuration!.StaticFilesPath + _sitePreset + "index.html";
 
-                if (filePath == "/")
-                    filePath = _configuration!.StaticFilesPath + _sitePreset + "index.html";
+                    if (filePath.StartsWith("/"))
+                        filePath = filePath.Trim('/');
 
-                if (filePath.StartsWith("/"))
-                    filePath = filePath.Trim('/');
-
-                if (!File.Exists(filePath))
-                {
-                    if (!File.Exists(_configuration!.StaticFilesPath + _sitePreset + filePath))
+                    if (!File.Exists(filePath))
                     {
-                        response.StatusCode = (int)HttpStatusCode.NotFound;
-                        filePath = $"{_configuration.StaticFilesPath}/404.html";
+                        if (!File.Exists(_configuration!.StaticFilesPath + _sitePreset + filePath))
+                        {
+                            response.StatusCode = (int)HttpStatusCode.NotFound;
+                            filePath = $"{_configuration.StaticFilesPath}/404.html";
+                        }
+                        else
+                        {
+                            filePath = _configuration.StaticFilesPath + _sitePreset + filePath;
+                        }
                     }
-                    else
+
+                    string extension = Path.GetExtension(filePath);
+
+                    ParseExtention(extension, response);
+
+                    using (var fileStream = File.OpenRead(filePath))
                     {
-                        filePath = _configuration.StaticFilesPath + _sitePreset + filePath;
+                        await fileStream.CopyToAsync(response.OutputStream);
                     }
+
+                    response.Close();
                 }
-
-                string extension = Path.GetExtension(filePath);
-
-                ParseExtention(extension, response);
-
-                using (var fileStream = File.OpenRead(filePath))
+                else if (request.HttpMethod.Equals("Post", StringComparison.OrdinalIgnoreCase))
                 {
-                    fileStream.CopyTo(response.OutputStream);
+                    // вызываем ControllersHandler -> AuthenticationController -> SendEmail
+                    new ControllersHandler(_sitePreset, _configuration).Handle(context);
                 }
-
-                response.Close();
             }
             catch (Exception ex)
             {

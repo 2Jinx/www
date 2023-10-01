@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Configuration.MyHttpServer
+namespace MyHttpServer.Configuration
 {
     public class AppSettings
     {
@@ -11,19 +11,19 @@ namespace Configuration.MyHttpServer
         public uint Port { get; set; }
 
         [JsonProperty("StaticFilesPath")]
-        public string StaticFilesPath { get; set; }
+        public string ? StaticFilesPath { get; set; }
 
         [JsonProperty("MailSender")]
-        public string MailSender { get; set; }
+        public string ? MailSender { get; set; }
 
         [JsonProperty("PasswordSender")]
-        public string PasswordSender { get; set; }
+        public string ? PasswordSender { get; set; }
 
         [JsonProperty("FromEmail")]
-        public string FromEmail { get; set; }
+        public string ? FromEmail { get; set; }
 
         [JsonProperty("SmtpServerHost")]
-        public string SmtpServerHost { get; set; }
+        public string ? SmtpServerHost { get; set; }
 
         [JsonProperty("SmtpServerPort")]
         public int SmtpServerPort { get; set; }
