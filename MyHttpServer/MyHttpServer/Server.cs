@@ -14,19 +14,23 @@ namespace MyHttpServer
 
         public Server(string siteType)
         {
-            lock (_lock)
+            if (_server == null)
             {
-                if (_server == null)
+                lock (_lock)
                 {
-                    lock (_lock)
+                    if(_server == null)
                     {
                         if (siteType == "google")
                         {
                             _sitePreset = "/google/";
                         }
-                        else
+                        else if (siteType == "battle.net")
                         {
                             _sitePreset = "/Battle.net/";
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Choose right site type!");
                         }
                         _configuration = new ServerConfiguration();
                         _server = new HttpListener();
@@ -62,7 +66,6 @@ namespace MyHttpServer
 
             if(_isAlive)
                 await serverTask;
-
         }
 
         private void Stop()
@@ -85,8 +88,7 @@ namespace MyHttpServer
             while (_isAlive)
             {
                 var context = await _server.GetContextAsync();
-                StaticFilesHandler staticHandler = new StaticFilesHandler(_sitePreset, _configuration);
-                staticHandler.Handle(context);
+                new StaticFilesHandler(_sitePreset, _configuration).Handle(context);
             }
         }
     }

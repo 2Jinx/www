@@ -21,6 +21,7 @@ namespace MyHttpServer.Handler
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
                 string absolutePath = request.Url!.AbsolutePath, filePath = absolutePath;
+
                 if (request.HttpMethod.Equals("Get", StringComparison.OrdinalIgnoreCase))
                 {
                     if (filePath == "/")

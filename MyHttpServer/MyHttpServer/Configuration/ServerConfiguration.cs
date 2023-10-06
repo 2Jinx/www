@@ -6,11 +6,20 @@ namespace MyHttpServer.Configuration
     public class ServerConfiguration
     {
         private const string _configFilePath = "appsettings.json";
+        private readonly object _lock = new object();
         private AppSettings _config;
 
         public ServerConfiguration()
         {
-            _config = new AppSettings();
+            if (_config == null)
+            {
+                lock (_lock)
+                {
+                    if(_config == null)
+                        _config = new AppSettings();
+                }
+            }
+            
         }
 
         /// <summary>

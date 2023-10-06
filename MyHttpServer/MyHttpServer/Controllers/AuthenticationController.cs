@@ -1,23 +1,36 @@
 ﻿using MyHttpServer.Services;
 using MyHttpServer.Configuration;
+using MyHttpServer.Model;
+using MyHttpServer.Attributes;
 
 namespace MyHttpServer.Controllers
 {
-    [Controller("/authentication")]
+    [Controller("Authentication")]
     public class AuthenticationController
     {
-        private ServerConfiguration _configuration;
-
-        public AuthenticationController(ServerConfiguration configuration)
+        [Post("SendEmail")]
+        public void SendEmail(string email, string password, ServerConfiguration configuration)
         {
-            _configuration = configuration;
+            EmailSender sender = new EmailSender(configuration);
+            sender.SendEmail(email, password);
         }
 
-        [Controller("/send-email")]
-        private void SendMail(string email, string password)
+        [Get("GetEmailList")]
+        public string GetEmailList()
         {
-            EmailSender sender = new EmailSender(_configuration);
-            sender.SendEmail(email, password);
+            return "<html><head><body><p>метод GetEmailList</p></body></head></html>";
+        }
+
+        [Get("GetAccountsList")]
+        public Account[] GetAccountsList()
+        {
+            var accounts = new[]
+            {
+                new Account{Email = "sdngdk", Password = "dngdkg"},
+                new Account{Email = "dnkg", Password = "dbghdl"}
+            };
+
+            return accounts;
         }
     }
 }

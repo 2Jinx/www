@@ -1,48 +1,77 @@
 ﻿using System.Net;
-using MyHttpServer.Controllers;
 using System.Web;
 using System.Reflection;
 using MyHttpServer.Configuration;
+using MyHttpServer.Attributes;
 
 namespace MyHttpServer.Handler
 {
     public class ControllersHandler: IHandler
     {
         private ServerConfiguration _configuration;
-        private readonly string _sitePreset;
         public ControllersHandler(string sitePreset, ServerConfiguration configuration)
         {
             _configuration = configuration;
-            _sitePreset = sitePreset;
         }
 
         public async void Handle(HttpListenerContext context)
         {
-            HttpListenerRequest request = context.Request;
-            HttpListenerResponse response = context.Response;
-            string absolutePath = request.Url!.AbsolutePath;
-            if(absolutePath == "/authentication/send-email")
+            try
             {
-                string input = await new StreamReader(request.InputStream).ReadToEndAsync(),
-                    email = HttpUtility.UrlDecode(input.Split('&')[0].Split('=')[1]),
-                    password = HttpUtility.UrlDecode(input.Split('&')[1].Split('=')[1]);
+                var strParams = context?.Request.Url!
+                    .Segments
+                    .Skip(1)
+                    .Select(s => s.Replace("/", ""))
+                    .ToArray();
 
-                string[] mailParams = { email, password };
+                Console.WriteLine(strParams[0] + " " + strParams[1]);
 
-                Type authenticationControllerType = typeof(AuthenticationController);
-                ConstructorInfo constructorInfo = authenticationControllerType.GetConstructor(new Type[] { _configuration.GetType() });
-                object[] constructorParameters = new object[] { _configuration };
-                object authenticationControllerInstance = constructorInfo.Invoke(constructorParameters);
+                if (strParams!.Length >= 2)
+                {
+                    string input = await new StreamReader(context.Request!.InputStream).ReadToEndAsync();
 
-                MethodInfo sendEmailInfo = authenticationControllerType.GetMethod("SendMail", BindingFlags.Instance | BindingFlags.NonPublic);
-                sendEmailInfo.Invoke(authenticationControllerInstance, mailParams);
+                    (string, string) user = ("", "");
+                    if (!String.IsNullOrEmpty(input))
+                    {
+                        user = (HttpUtility.UrlDecode(input.Split('&')[0].Split('=')[1]), HttpUtility.UrlDecode(input.Split('&')[1].Split('=')[1]));
+                    }
 
-                response.Redirect("/");
-                response.Close();
+                    string controllerName = strParams[0], methodName = strParams[1];
+                    var assembly = Assembly.GetExecutingAssembly();
+
+                    var controller = assembly.GetTypes()
+                        .Where(t => Attribute.IsDefined(t, typeof(ControllerAttribute)))
+                        .FirstOrDefault(c => ((ControllerAttribute)Attribute.GetCustomAttribute(c, typeof(ControllerAttribute))!)
+                        .Type.Equals(controllerName, StringComparison.OrdinalIgnoreCase));
+
+                    var method = controller?.GetMethods()
+                       .Where(x => x.GetCustomAttributes(true)
+                       .Any(attr => attr.GetType().Name.Equals($"{context.Request.HttpMethod}Attribute", StringComparison.OrdinalIgnoreCase)))
+                       .FirstOrDefault(m => m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase));
+
+                    var queryParams = new object[] { };
+
+                    if (user != ("", ""))
+                    {
+                        queryParams = new object[] { user.Item1, user.Item2, _configuration};
+                    }
+
+                    method?.Invoke(Activator.CreateInstance(controller), queryParams);
+
+                    context.Response.Redirect("/");
+                    context.Response.Close();
+                }
+                else
+                {
+                    Console.WriteLine("Another handler");
+                    throw new ArgumentException("Failed to process request!");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                new StaticFilesHandler(_sitePreset, _configuration).Handle(context);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Controller handler: " + ex.Message);
+                Console.ResetColor();
             }
         }
     }
