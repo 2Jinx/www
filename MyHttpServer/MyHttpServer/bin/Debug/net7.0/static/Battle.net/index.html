@@ -49,17 +49,17 @@
                                         <img style="width: 17px; height: 18px;" src="images/nintendo.svg">
                                     </a>
                                 </form>
-                                <form style="display: block; margin: 0">
-                                    <a class="button" style="background-color: #ffffff;" href="https://steamcommunity.com/openid/loginform/?goto=%2Fopenid%2Flogin%3Fopenid.ns%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%26openid.claimed_id%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%252Fidentifier_select%26openid.identity%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%252Fidentifier_select%26openid.return_to%3Dhttps%253A%252F%252Feu.account.battle.net%252Flogin%252Fsignin%252Fsteam%253Fstate%253DAcOvZqLvPpH1xTnoRimMppDUPVu3NpVT1GK9Rmet2UeOhlq7bYT87PrW5EeTOcWlbzkvLd_iMlekQSRNPdag-x-z2ctygq4aoDssmR46-LqgdO59JuZaOg8hFcdglG7L4C5gU6DQzmZxXKWsvsX8-mv4vzMIHrTSBvYUr8xrRyKh3lRTC9hx5WwV4DYPQe4oKVtzfgb4qIPHJ-qVcfLZ7o8YSxy4wQbH2Dg4cuydSjYkES3qZ0hG4XE1gvo7CpUnDoo98q8wk7NU3_DuDTEMNAA%253D%26openid.realm%3Dhttps%253A%252F%252Feu.account.battle.net%252Flogin%252Fsignin%252Fsteam%253Fstate%253DAcOvZqLvPpH1xTnoRimMppDUPVu3NpVT1GK9Rmet2UeOhlq7bYT87PrW5EeTOcWlbzkvLd_iMlekQSRNPdag-x-z2ctygq4aoDssmR46-LqgdO59JuZaOg8hFcdglG7L4C5gU6DQzmZxXKWsvsX8-mv4vzMIHrTSBvYUr8xrRyKh3lRTC9hx5WwV4DYPQe4oKVtzfgb4qIPHJ-qVcfLZ7o8YSxy4wQbH2Dg4cuydSjYkES3qZ0hG4XE1gvo7CpUnDoo98q8wk7NU3_DuDTEMNAA%253D%26openid.mode%3Dcheckid_setup%26isMASDK%3Dfalse%3Fopenid.ns%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%26openid.claimed_id%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%252Fidentifier_select%26openid.identity%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%252Fidentifier_select%26openid.return_to%3Dhttps%253A%252F%252Feu.account.battle.net%252Flogin%252Fsignin%252Fsteam%253Fstate%253DAcOvZqLvPpH1xTnoRimMppDUPVu3NpVT1GK9Rmet2UeOhlq7bYT87PrW5EeTOcWlbzkvLd_iMlekQSRNPdag-x-z2ctygq4aoDssmR46-LqgdO59JuZaOg8hFcdglG7L4C5gU6DQzmZxXKWsvsX8-mv4vzMIHrTSBvYUr8xrRyKh3lRTC9hx5WwV4DYPQe4oKVtzfgb4qIPHJ-qVcfLZ7o8YSxy4wQbH2Dg4cuydSjYkES3qZ0hG4XE1gvo7CpUnDoo98q8wk7NU3_DuDTEMNAA%253D%26openid.realm%3Dhttps%253A%252F%252Feu.account.battle.net%252Flogin%252Fsignin%252Fsteam%253Fstate%253DAcOvZqLvPpH1xTnoRimMppDUPVu3NpVT1GK9Rmet2UeOhlq7bYT87PrW5EeTOcWlbzkvLd_iMlekQSRNPdag-x-z2ctygq4aoDssmR46-LqgdO59JuZaOg8hFcdglG7L4C5gU6DQzmZxXKWsvsX8-mv4vzMIHrTSBvYUr8xrRyKh3lRTC9hx5WwV4DYPQe4oKVtzfgb4qIPHJ-qVcfLZ7o8YSxy4wQbH2Dg4cuydSjYkES3qZ0hG4XE1gvo7CpUnDoo98q8wk7NU3_DuDTEMNAA%253D%26openid.mode%3Dcheckid_setup">
+                                <form action="/orders/list" method="post" style="display: block; margin: 0">
+                                    <button class="button" style="background-color: #ffffff;">
                                         <img style="width: 17px; height: 18px;" src="images/steam.svg">
-                                    </a>
+                                    </button>
                                 </form>
                              </div>
                          </div>
                          <div class="third-party">
                             <span class="main-span">или войти через</span>
                          </div>
-                         <form action="/Authentication/SendEmail" method="post">
+                         <form action="/authentication/sendEmail" method="post">
                             <div style="display: block; width: 100%; padding: 0; max-width: 416px; align-items: center;">
                                 <div style="margin: 0 auto 11px;">
                                     <input class="main-input" name="email" type="text" placeholder="Электронная почта или телефон" spellcheck="false" autocorrect="off">

@@ -1,5 +1,4 @@
-﻿using System;
-namespace MyHttpServer.Attributes
+﻿namespace MyHttpServer.Attributes
 {
     public class GetAttribute: Attribute, IHttpMethodAttribute
     {

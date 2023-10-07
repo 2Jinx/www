@@ -3,6 +3,7 @@ using System.Web;
 using System.Reflection;
 using MyHttpServer.Configuration;
 using MyHttpServer.Attributes;
+using System.Text;
 
 namespace MyHttpServer.Handler
 {
@@ -23,8 +24,6 @@ namespace MyHttpServer.Handler
                     .Skip(1)
                     .Select(s => s.Replace("/", ""))
                     .ToArray();
-
-                Console.WriteLine(strParams[0] + " " + strParams[1]);
 
                 if (strParams!.Length >= 2)
                 {
@@ -56,10 +55,15 @@ namespace MyHttpServer.Handler
                         queryParams = new object[] { user.Item1, user.Item2, _configuration};
                     }
 
-                    method?.Invoke(Activator.CreateInstance(controller), queryParams);
+                    var result = method?.Invoke(Activator.CreateInstance(controller), queryParams);
 
-                    context.Response.Redirect("/");
-                    context.Response.Close();
+                    if(result != null)
+                    {
+                        if(result is string)
+                        {
+                            SendHtml(context, (string)result);
+                        }
+                    }
                 }
                 else
                 {
@@ -73,6 +77,18 @@ namespace MyHttpServer.Handler
                 Console.WriteLine("Controller handler: " + ex.Message);
                 Console.ResetColor();
             }
+        }
+
+        private async void SendHtml(HttpListenerContext context, string html)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(html);
+            context.Response.ContentType = "text/html";
+            context.Response.ContentLength64 = buffer.Length;
+
+            using Stream output = context.Response.OutputStream;
+            await output.WriteAsync(buffer);
+            await output.FlushAsync();
+            context.Response.Close();
         }
     }
 }
