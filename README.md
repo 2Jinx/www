@@ -7,7 +7,7 @@
 - [KTTC](#KTTC)
 - [Battle.net](#Battle.net)
 - [HTTP Server](#HTTP-Server)  
-
+- [Computer Games](#Computer-Games)
 ---
 
 
@@ -37,3 +37,11 @@
 #### [Проект](https://github.com/2Jinx/www/tree/main/MyHttpServer "Проект")
 
 ---
+
+## Computer Games
+
+#### [Проект](https://github.com/2Jinx/www/tree/main/ComputerGames "Проект")
+
+---
+
+
