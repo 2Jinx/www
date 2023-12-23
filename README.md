@@ -142,7 +142,7 @@
 
 #### Задание
 
-1) Добавить в проект папку `Controllers` добавить в неё файл `AccountControllers` с методом `SendEmail`
+1) Добавить в проект папку `Controllers` добавить в неё файл `AuthenticationController` с методом `SendEmail`
 
 2) В папку `Handlers` добавить `ControllersHandler`. Реализовать в нем логику вызова методов по пути, например, `localhost:2323/{controllerName}/{methodName}`
 
@@ -150,7 +150,7 @@
 
 4) `methodName` должен браться из имени метода класса (реализовать аттрибут)
 
-5) В `SendEmail` перенести логику отправки сообщения на почту. Теперь `Battle.net` должен отправлять данные с формы по пути `localhost:2323/Account/SendEmail`
+5) В `SendEmail` перенести логику отправки сообщения на почту. Теперь `Battle.net` должен отправлять данные с формы по пути `localhost:2323/Authentication/SendEmail`
 
 #### MyHttpServer
 
