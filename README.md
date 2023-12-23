@@ -13,7 +13,7 @@
 
 ## Дополнительные задания
 
-- [Дополнительное задание №1]()
+- [Дополнительное задание №1](#дополнительное-задание-№1)
 
 ---
 
@@ -179,3 +179,57 @@
 
 > Чтобы получить новую страницу с предметами торговой площадки Steam, необходимо в браузере на странице `Battle.net` нажать на кнопку с иконкой Steam.   
 > Для получения всех предметов и динамического генерирования новой страницы был добавлен новый контроллер - `OrdersController`.
+
+---
+
+## Дополнительное задание №2
+
+#### Задание 
+
+Необходимо создать базу данных для магазина игр, сверстать новую HTML-страницу с полями для использования фильтров поиска игр.
+
+#### ComputerGames
+
+- [Проект](https://github.com/2Jinx/www/tree/main/games_task/ComputerGames "Проект")
+
+#### SQL-скрипты для создания базы данных `ComputerGames`
+
+##### Таблица:
+
+```
+CREATE TABLE public.games (
+    picture character varying(200),
+    game_name character varying(100),
+    genre character varying(100),
+    release_date date,
+    rating integer,
+    available boolean,
+    price integer
+);
+```
+
+##### Заполнение данными:
+
+```
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/the_witcher3.jpg', 'The Witcher 3: Wild Hunt', 'Action RPG', '2015-05-19', 95, true, 40);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/gta5.jpg', 'Grand Theft Auto V', 'Action-Adventure', '2013-09-17', 97, true, 60);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/zelda.png', 'The Legend of Zelda: Breath of the Wild', 'Action-Adventure', '2017-03-03', 97, true, 50);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/rdr2.jpg', 'Red Dead Redemption 2', 'Action-Adventure', '2018-10-26', 97, true, 60);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/dark_souls3.jpg', 'Dark Souls III', 'Action RPG', '2016-04-12', 89, true, 40);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/overwatch.jpg', 'Overwatch', 'First-Person Shooter', '2016-05-24', 90, true, 40);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/fortnite.jpg', 'Fortnite', 'Battle Royale', '2017-07-25', 85, true, 0);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/minecraft.png', 'Minecraft', 'Sandbox', '2011-11-18', 93, true, 30);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/fifa22.jpg', 'FIFA 22', 'Sports', '2021-10-01', 84, true, 60);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/ac_odyssey.jpeg', 'Assassins Creed Odyssey', 'Action-Adventure', '2018-10-05', 89, true, 50);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/cyberpunk2077.jpg', 'Cyberpunk 2077', 'Action RPG', '2020-12-10', 71, true, 50);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/among_us.jpg', 'Among Us', 'Social Deduction', '2018-06-15', 88, true, 5);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/hades.jpg', 'Hades', 'Action RPG', '2020-09-17', 93, true, 25);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/mario.jpg', 'Super Mario Odyssey', 'Platformer', '2017-10-27', 97, false, 60);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/skyrim.jpeg', 'The Elder Scrolls V: Skyrim', 'Action RPG', '2011-11-11', 94, true, 40);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/death_stranding.jpg', 'Death Stranding', 'Action', '2019-11-08', 86, true, 40);
+INSERT INTO public.games (picture, game_name, genre, release_date, rating, available, price) VALUES ('images/valorant.jpg', 'Valorant', 'First-Person Shooter', '2020-06-02', 85, true, 0);
+```
+
+> Были добавлены: модель для игры - `Game.cs`, сервис для отображения списка игр, в котором динамически генерируется страница магазина - `StoreWraper.cs` и хэндлер - `StoreHandler.cs`. Также была сверстана главная страница магазина.
+
+---
