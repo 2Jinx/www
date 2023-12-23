@@ -11,36 +11,26 @@
 ---
 
 
-## Google
+## Практика №1
 
-#### [Проект](https://github.com/2Jinx/www/tree/main/Google "Проект")  
-#### [Результат верстки](https://2Jinx.github.io/www/Google/ "Результат верстки")
+#### Google
 
----
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_1/Google "Проект")  
+- [Результат верстки](https://2Jinx.github.io/www/homework_1/Google/ "Результат верстки")
 
-## KTTC
+#### KTTC
 
-#### [Проект](https://github.com/2Jinx/www/tree/main/kttc "Проект")  
-#### [Результат верстки](https://2Jinx.github.io/www/kttc/ "Результат верстки")
-
----
-
-## Battle.net
-
-#### [Проект](https://github.com/2Jinx/www/tree/main/Battle.net "Проект")  
-#### [Результат верстки](https://2Jinx.github.io/www/Battle.net/ "Результат верстки")
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_1/kttc "Проект")  
+- [Результат верстки](https://2Jinx.github.io/www/homework_1/kttc/ "Результат верстки")
 
 ---
 
-## HTTP Server
+## Практика №2
 
-#### [Проект](https://github.com/2Jinx/www/tree/main/MyHttpServer "Проект")
+#### Battle.net
 
----
-
-## Computer Games
-
-#### [Проект](https://github.com/2Jinx/www/tree/main/ComputerGames "Проект")
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_2/Battle.net "Проект")  
+- [Результат верстки](https://2Jinx.github.io/www/homework_2/Battle.net/ "Результат верстки")
 
 ---
 
