@@ -127,6 +127,8 @@
 
 4) Произвести рефакторинг кода. С помощью паттерна цепочки обязанностей вынести отдельно логику загрузки статический файлов в `StaticFilesHandler`
 
+#### MyHttpServer
+
 - [Проект](https://github.com/2Jinx/www/tree/main/homework_6/MyHttpServer "Проект") 
 
 ---
