@@ -68,7 +68,7 @@
 
 - [Проект](https://github.com/2Jinx/www/tree/main/homework_3/MyHttpServer "Проект")  
 
-> В `appsettings.json` порт установлен `5120`.
+> Для сервера установлен адрес - `localhost` и порт - `5120`.
 
 ---
 
@@ -92,6 +92,8 @@
 
 - [Проект](https://github.com/2Jinx/www/tree/main/homework_4/MyHttpServer "Проект") 
 
+> Для сервера установлен адрес - `localhost` и порт - `5120`.
+
 ---
 
 ## Практика №5
@@ -109,7 +111,7 @@
 
 - [Проект](https://github.com/2Jinx/www/tree/main/homework_5/MyHttpServer "Проект") 
 
-> Для сервера установлен адрес - `localhost` и порт - `5120`
+> Для сервера установлен адрес - `localhost` и порт - `5120`.
 
 ---
 
@@ -131,6 +133,28 @@
 
 - [Проект](https://github.com/2Jinx/www/tree/main/homework_6/MyHttpServer "Проект")
 
+> Для сервера установлен адрес - `localhost` и порт - `5120`.  
 > Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
 
 ---
+
+## Практика №7
+
+#### Задание
+
+1) Добавить в проект папку `Controllers` добавить в неё файл `AccountControllers` с методом `SendEmail`
+
+2) В папку `Handlers` добавить `ControllersHandler`. Реализовать в нем логику вызова методов по пути, например, `localhost:2323/{controllerName}/{methodName}`
+
+3) `controllerName` должен браться из аттрибута `HttpController`(реализовать аттрибут)
+
+4) `methodName` должен браться из имени метода класса (реализовать аттрибут)
+
+5) В `SendEmail` перенести логику отправки сообщения на почту. Теперь `Battle.net` должен отправлять данные с формы по пути `localhost:2323/Account/SendEmail`
+
+#### MyHttpServer
+
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_7/MyHttpServer "Проект")
+
+> Для сервера установлен адрес - `localhost` и порт - `5120`. 
+> Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
