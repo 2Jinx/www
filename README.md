@@ -129,6 +129,8 @@
 
 #### MyHttpServer
 
-- [Проект](https://github.com/2Jinx/www/tree/main/homework_6/MyHttpServer "Проект") 
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_6/MyHttpServer "Проект")
+
+> Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
 
 ---
