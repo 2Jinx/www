@@ -1,0 +1,32 @@
+[
+  {
+    "id": 2,
+    "email": "firstUser@mail.ru",
+    "password": "firstUser"
+  },
+  {
+    "id": 3,
+    "email": "thirdUser@mail.ru",
+    "password": "thirdUser"
+  },
+  {
+    "id": 4,
+    "email": "newUser@mail.ru",
+    "password": "newUsre"
+  },
+  {
+    "id": 5,
+    "email": "god@mail.ru",
+    "password": "god"
+  },
+  {
+    "id": 6,
+    "email": "god@mail.ru",
+    "password": "god"
+  },
+  {
+    "id": 7,
+    "email": "admin@mail.ru",
+    "password": "admin"
+  }
+]
