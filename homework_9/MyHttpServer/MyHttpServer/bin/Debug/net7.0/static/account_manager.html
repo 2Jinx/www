@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body class="body">
+    <div class="container">
+        <div class="main-div">
+            <main class="main">
+                <div class="auth">
+
+                    <h3 class="text">Управление аккаунтами</h3>
+
+                    <form action="Account/Add" method="POST">
+                        <span>Добавить нового пользователя</span><br>
+                        <span>-------------------------------------------</span>
+                        <div style="display: block; width: 100%; padding: 0; max-width: 416px; align-items: center;">
+                            <div style="margin: 0 auto 11px;">
+                                <input class="main-input" name="email" type="text"
+                                    placeholder="Электронная почта или телефон" spellcheck="false" autocorrect="off">
+                            </div>
+                            <div style="margin: 0 auto 11px;">
+                                <input class="main-input" name="password" type="password" placeholder="Пароль"
+                                    spellcheck="false" autocorrect="off">
+                            </div>
+                        </div>
+                        <div class="auth-button">
+                            <button class="submit-button" type="submit"
+                                aria-label="Добавить нового пользователя">Добавить нового пользователя</button>
+                        </div>
+                    </form>
+                    <div style="height: 100px;"></div>
+                    <form action="Account/Delete" method="POST">
+                        <span>Удалить пользователя</span><br>
+                        <span>-------------------------------------------</span>
+                        <div style="display: block; width: 100%; padding: 0; max-width: 416px; align-items: center;">
+                            <div style="margin: 0 auto 11px;">
+                                <input class="main-input" name="id" type="text"
+                                    placeholder="ID пользователя" spellcheck="false" autocorrect="off">
+                            </div>
+                        </div>
+                        <div class="auth-button">
+                            <button class="submit-button" type="submit"
+                                aria-label="Удалить пользователя">Удалить пользователя</button>
+                        </div>
+                    </form>
+                    <div style="height: 100px;"></div>
+                    <form action="Account/Update" method="POST">
+                        <span>Обновить информцию пользователя</span><br>
+                        <span>-------------------------------------------</span>
+                        <div style="display: block; width: 100%; padding: 0; max-width: 416px; align-items: center;">
+                            <div style="margin: 0 auto 11px;">
+                                <input class="main-input" name="id" type="text"
+                                    placeholder="ID пользователя" spellcheck="false" autocorrect="off">
+                            </div>
+                        </div>
+                        <div style="margin: 0 auto 11px;">
+                            <input class="main-input" name="email" type="text"
+                                placeholder="Электронная почта или телефон" spellcheck="false" autocorrect="off">
+                        </div>
+                        <div style="margin: 0 auto 11px;">
+                            <input class="main-input" name="password" type="password" placeholder="Пароль"
+                                spellcheck="false" autocorrect="off">
+                        </div>
+                        <div class="auth-button">
+                            <button class="submit-button" type="submit"
+                                aria-label="Обновить пользователя">Обновить пользователя</button>
+                        </div>
+                    </form>
+                    <div style="height: 100px;"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
