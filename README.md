@@ -190,8 +190,46 @@
 > Для вызова GET-методов необходимо прописать их вызов в аддресную строку браузера: `localhost:5120/Account/GetAll` и `localhost:5120/Account/GetById/1`.   
 > Для вызова POST-методов на главной странице была добавлена кнопка с иконкой космонавта для перехода на страницу управления аккаунтами (первый ряд с кнопками, последняя кнопка).
 
-
 ---
+
+## Практика №9
+
+#### Задание
+
+1) Создать базу данных `BattleDB` 
+
+2) Добавить таблицу `Account`
+
+3) Переделать логику методов `AccountController`. Данные теперь должны браться не из статическго списка, а из БД и соответственно там изменяться и записываться.
+
+#### MyHttpServer
+
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_8/MyHttpServer "Проект")
+
+> Для сервера установлен адрес - `localhost` и порт - `5120`. 
+> Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
+> Для работы с базой данных была добавлена ORM с методами `Select`, `SelectById`, `Add`, `Delete`, `Update`, которые вызывааются в методах `AccountController`.  
+
+#### SQL-запросы для создания BattleDB
+
+```
+create table account(
+	id integer,
+	email varchar(100),
+	password varchar(100)
+);
+
+insert into account(id, email, password) values(1, 'firstUser@mail.ru', 'firstUser');
+insert into account(id, email, password) values(2, 'secondUser@mail.ru', 'secondUser');
+insert into account(id, email, password) values(3, 'thirdUser@mail.ru', 'thirdUser');
+```
+
+#### MyHttpServer
+
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_8/MyHttpServer "Проект")
+
+> Для сервера установлен адрес - `localhost` и порт - `5120`. 
+> Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
 
 ## Дополнительное задание №1
 
