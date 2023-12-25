@@ -59,7 +59,7 @@ namespace MyHttpServer.Handler
                     if (parameterValues.Count == 0 && strParams.Length > 2 && controller.ToString().Contains("Account"))
                     {
                         for (int i = 2; i < strParams.Length; i++)
-                            parameterValues.Add(int.Parse(strParams[i]));
+                            parameterValues.Add(strParams[i]);
                     }
 
                     var result = method?.Invoke(Activator.CreateInstance(controller), parameterValues.ToArray());
