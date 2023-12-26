@@ -1,0 +1,12 @@
+/Users/jinx/Projects/PixelBattle/GameUtils/bin/Debug/net7.0/GameUtils.deps.json
+/Users/jinx/Projects/PixelBattle/GameUtils/bin/Debug/net7.0/GameUtils.dll
+/Users/jinx/Projects/PixelBattle/GameUtils/bin/Debug/net7.0/GameUtils.pdb
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.csproj.AssemblyReference.cache
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.AssemblyInfoInputs.cache
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.AssemblyInfo.cs
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.csproj.CoreCompileInputs.cache
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.dll
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/refint/GameUtils.dll
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/GameUtils.pdb
+/Users/jinx/Projects/PixelBattle/GameUtils/obj/Debug/net7.0/ref/GameUtils.dll
