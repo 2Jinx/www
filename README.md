@@ -244,20 +244,7 @@ insert into account(id, email, password) values(3, 'thirdUser@mail.ru', 'thirdUs
 > Кнопки для регистрации на главной страницы подставляются в html при помощи шаблонизатора.   
 > Шаблонизатор имеет класс `TemplateParser`, в котором реализованы методы для синтаксиса `for` и `@имя переменной`. Для хранения html самих кнопок был создан json-файл `buttons.json`, в котором хранятся кнопки для первого и второго ряда отдельно. Для получения всех кнопок сервером из json-файла была добавлена модель `Buttons`. С помощью `HtmlAgiityPack` происходит получение фрагмента из html, который необходимо обработать шаблонизатором перед отправкой страницы пользователю. Для этого был создан отдельный сервис `HtmlTemplateReader`, который после всех преобразований отправит страницу пользователю.
 
-#### SQL-запросы для создания BattleDB
-
-```
-create table account(
-	id integer,
-	email varchar(100),
-	password varchar(100)
-);
-
-insert into account(id, email, password) values(1, 'firstUser@mail.ru', 'firstUser');
-insert into account(id, email, password) values(2, 'secondUser@mail.ru', 'secondUser');
-insert into account(id, email, password) values(3, 'thirdUser@mail.ru', 'thirdUser');
-
-```
+[SQL-запросы для создания BattleDB](#sql-запросы-для-создания-battledb)
 
 ---
 
