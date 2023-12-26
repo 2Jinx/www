@@ -10,6 +10,7 @@
 - [Практика №7](#практика-7)
 - [Практика №8](#практика-8)
 - [Практика №9](#практика-9)
+- [Практика №10](#практика-10)
 
 ---
 
@@ -205,7 +206,7 @@
 
 #### MyHttpServer
 
-- [Проект](https://github.com/2Jinx/www/tree/main/homework_8/MyHttpServer "Проект")
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_9/MyHttpServer "Проект")
 
 > Для сервера установлен адрес - `localhost` и порт - `5120`. 
 > Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
@@ -225,12 +226,40 @@ insert into account(id, email, password) values(2, 'secondUser@mail.ru', 'second
 insert into account(id, email, password) values(3, 'thirdUser@mail.ru', 'thirdUser');
 ```
 
+---
+
+## Практика №10
+
+#### Задание
+
+1) Необходимо реализовать шаблонизатор в отдлеьном проекте библиотеки с синтаксисом `if`, `for`, `@имя переменной`.
+Шаблонизатор должен принимать строку(шаблон) и объект. Данные с объекта должны подставляться в нужные места в шаблоне.
+
 #### MyHttpServer
 
-- [Проект](https://github.com/2Jinx/www/tree/main/homework_8/MyHttpServer "Проект")
+- [Проект](https://github.com/2Jinx/www/tree/main/homework_10/MyHttpServer "Проект")
 
 > Для сервера установлен адрес - `localhost` и порт - `5120`. 
-> Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.
+> Для проверки отправки сообщений необходимо в файле `appsettings.json` поменять значение у `FromEmail` на адрес своей почты.    
+> Кнопки для регистрации на главной страницы подставляются в html при помощи шаблонизатора.   
+> Шаблонизатор имеет класс `TemplateParser`, в котором реализованы методы для синтаксиса `for` и `@имя переменной`. Для хранения html самих кнопок был создан json-файл `buttons.json`, в котором хранятся кнопки для первого и второго ряда отдельно. Для получения всех кнопок сервером из json-файла была добавлена модель `Buttons`. С помощью `HtmlAgiityPack` происходит получение фрагмента из html, который необходимо обработать шаблонизатором перед отправкой страницы пользователю. Для этого был создан отдельный сервис `HtmlTemplateReader`, который после всех преобразований отправит страницу пользователю.
+
+#### SQL-запросы для создания BattleDB
+
+```
+create table account(
+	id integer,
+	email varchar(100),
+	password varchar(100)
+);
+
+insert into account(id, email, password) values(1, 'firstUser@mail.ru', 'firstUser');
+insert into account(id, email, password) values(2, 'secondUser@mail.ru', 'secondUser');
+insert into account(id, email, password) values(3, 'thirdUser@mail.ru', 'thirdUser');
+
+```
+
+---
 
 ## Дополнительное задание №1
 
